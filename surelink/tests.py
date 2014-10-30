@@ -34,7 +34,7 @@ class PublicFLVTestCase(unittest.TestCase):
              """test_stream.flv&width=480&height=360&poster="""
              """http://ccnmtl.columbia.edu/broadcast/posters/"""
              """vidthumb_480x360.jpg&protection=9fc95427445a4684eef0ecb6"""
-             """4ba6bf8f9bfcfd6c" />"""))
+             """4ba6bf8f9bfcfd6c"></iframe>"""))
 
     def testEdblogsEmbed(self):
         self.assertEquals(
@@ -92,7 +92,7 @@ class PublicFLVDefaultPosterTestCase(unittest.TestCase):
              """test_stream.flv&width=480&height=360&poster="""
              """http://ccnmtl.columbia.edu/broadcast/test/"""
              """test_stream.jpg&protection=9fc95427445a4684eef0ecb64ba6bf8f"""
-             """9bfcfd6c" />"""))
+             """9bfcfd6c"></iframe>"""))
 
     def testEdblogsEmbed(self):
         self.assertEquals(
@@ -147,7 +147,7 @@ class PublicMP4TestCase(unittest.TestCase):
              """file=test/test_clip.mp4&width=480&height=360&poster="""
              """http://ccnmtl.columbia.edu/broadcast/posters/"""
              """vidthumb_480x360.jpg&protection=e4e546e9398cacbe"""
-             """6b3e29f1ccd9d286fd5017ff" />"""))
+             """6b3e29f1ccd9d286fd5017ff"></iframe>"""))
 
     def testEdblogsEmbed(self):
         self.assertEquals(
@@ -202,7 +202,7 @@ class WindMP4TestCase(unittest.TestCase):
              """ccnmtl.columbia.edu/video/?player=v4&file="""
              """test/test_clip.mp4&width=480&height=360&poster="""
              """http://ccnmtl.columbia.edu/broadcast/posters/"""
-             """vidthumb_480x360.jpg&authtype=wind" />"""))
+             """vidthumb_480x360.jpg&authtype=wind"></iframe>"""))
 
     def testEdblogsEmbed(self):
         self.assertEquals(

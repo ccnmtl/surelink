@@ -124,7 +124,7 @@ class SureLink:
                 self.src_url())
 
     def iframe_embed(self):
-        return ("""<iframe width="%d" height="%d" src="%s?%s%s" />""" %
+        return ("""<iframe width="%d" height="%d" src="%s?%s%s"></iframe>""" %
                 (self.width, self.height + 24, SURELINK_BASE,
                  self.video_options(), self.protection_string()))
 
