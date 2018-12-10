@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 import hashlib
 
 # variables for now. think about how to parameterize later
@@ -38,6 +40,31 @@ AUTHTYPE_OPTIONS = [
 ]
 
 
+def force_bytes(s, encoding='utf-8', strings_only=False, errors='strict'):
+    """
+    Adapted from Django's force_bytes().
+
+    Similar to smart_bytes, except that lazy instances are resolved to
+    strings, rather than kept as lazy objects.
+
+    If strings_only is True, don't convert (some) non-string-like objects.
+    """
+    # Handle the common case first for performance reasons.
+    if isinstance(s, bytes):
+        if encoding == 'utf-8':
+            return s
+        else:
+            return s.decode('utf-8', errors).encode(encoding, errors)
+    if strings_only:
+        return s
+    if isinstance(s, memoryview):
+        return bytes(s)
+    if not isinstance(s, str):
+        return str(s).encode(encoding, errors)
+    else:
+        return s.encode(encoding, errors)
+
+
 class SureLink:
     def __init__(self, filename, width, height, captions, poster, protection,
                  authtype, protection_key):
@@ -56,7 +83,7 @@ class SureLink:
         else:
             protection = self.protection
         s = "%s:%s:%s" % (self.filename, protection, self.protection_key)
-        return hashlib.sha1(s).hexdigest()
+        return hashlib.sha1(force_bytes(s)).hexdigest()
 
     def player_string(self):
         if self.protection == PUBLIC_MP4_DOWNLOAD:
@@ -117,7 +144,7 @@ class SureLink:
     def public_mp4_download(self):
         return self.protection == PUBLIC_MP4_DOWNLOAD
 
-    ##### Nitty-gritty embed codes! #####
+    # Nitty-gritty embed codes!
 
     def basic_embed(self):
         return ("""<script type="text/javascript" src="%s"></script>""" %

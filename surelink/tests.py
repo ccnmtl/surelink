@@ -1,5 +1,8 @@
-from helpers import SureLink
+from __future__ import unicode_literals
+
 import unittest
+from surelink.helpers import SureLink
+
 THUMB_URL = "http://ccnmtl.columbia.edu/broadcast/posters/vidthumb_480x360.jpg"
 
 
