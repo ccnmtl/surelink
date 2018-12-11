@@ -1,0 +1,5 @@
+1.1.1 (2018-12-10)
+==================
+
+* Added Python 3 support
+* Added flake8 and travis testing
